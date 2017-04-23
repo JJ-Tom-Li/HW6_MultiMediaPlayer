@@ -2,17 +2,18 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context="com.example.no_1.hw6_multimediaplayer.MainActivity"
-    tools:layout_editor_absoluteY="0dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="0dp">
 
     <LinearLayout
         android:layout_width="368dp"
-        android:layout_height="624dp"
+        android:layout_height="500dp"
         android:orientation="vertical"
         android:weightSum="1"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="5dp">
 
@@ -20,9 +21,9 @@
             android:id="@+id/textViewCurrentSongName"
             android:layout_width="match_parent"
             android:layout_height="91dp"
-            android:text="@string/nowplaying"
             android:layout_weight="0.07"
-            android:textSize="25sp"/>
+            android:text="@string/nowplaying"
+            android:textSize="25sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,25 +35,26 @@
                 android:layout_width="95dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
+                android:gravity="center"
                 android:text="@string/songrequest"
-                android:textSize="25sp"
-                android:gravity="center"/>
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/textViewSongRequest"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text=""
-                android:textSize="25sp"
-                android:gravity="center"/>
+                android:textSize="25sp" />
 
         </LinearLayout>
 
         <TableLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.21">
+            android:layout_gravity="center_vertical|center"
+            android:layout_weight="0.62">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -61,58 +63,69 @@
 
                 <Button
                     android:id="@+id/buttonSeven"
+                    style="@style/Widget.AppCompat.Button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/_7"
-                    tools:layout_weight="1"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    tools:ignore="ButtonStyle"
+                    tools:layout_weight="1" />
 
                 <Button
                     android:id="@+id/buttonEight"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="@string/_8"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    tools:ignore="ButtonStyle" />
 
                 <Button
                     android:id="@+id/buttonNine"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="@string/_9"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    tools:ignore="ButtonStyle" />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                >
+                android:layout_weight="1">
 
                 <Button
                     android:id="@+id/buttonFour"
+                    style="@style/Widget.AppCompat.Button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/_4"
-                    tools:layout_weight="1"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    tools:ignore="ButtonStyle"
+                    tools:layout_weight="1" />
 
                 <Button
                     android:id="@+id/buttonFive"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/_5"
-                    tools:layout_weight="1"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    tools:ignore="ButtonStyle"
+                    tools:layout_weight="1" />
 
                 <Button
                     android:id="@+id/buttonSix"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/_6"
-                    tools:layout_weight="1"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    tools:ignore="ButtonStyle"
+                    tools:layout_weight="1" />
             </TableRow>
 
             <TableRow
@@ -122,27 +135,33 @@
 
                 <Button
                     android:id="@+id/buttonOne"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/_1"
-                    tools:layout_weight="1"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    tools:ignore="ButtonStyle"
+                    tools:layout_weight="1" />
 
                 <Button
                     android:id="@+id/buttonTwo"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/_2"
-                    tools:layout_weight="1"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    tools:ignore="ButtonStyle"
+                    tools:layout_weight="1" />
 
                 <Button
                     android:id="@+id/buttonThree"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/_3"
-                    tools:layout_weight="1"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    tools:ignore="ButtonStyle"
+                    tools:layout_weight="1" />
             </TableRow>
 
             <TableRow
@@ -152,53 +171,61 @@
 
                 <Button
                     android:id="@+id/buttonClear"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/clear"
-                    tools:layout_weight="1"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    tools:ignore="ButtonStyle"
+                    tools:layout_weight="1" />
 
                 <Button
                     android:id="@+id/buttonZero"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/_0"
-                    tools:layout_weight="1"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    tools:ignore="ButtonStyle"
+                    tools:layout_weight="1" />
 
                 <Button
                     android:id="@+id/buttonBack"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/backArrow"
-                    tools:layout_weight="1"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    tools:ignore="ButtonStyle"
+                    tools:layout_weight="1" />
             </TableRow>
         </TableLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="46dp"
-            android:orientation="horizontal"
-            android:layout_weight="0.15">
+            android:layout_weight="0.15"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/buttonList"
-                android:layout_width="wrap_content"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="185dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/list"
                 android:layout_gravity="center"
-                android:textSize="20sp"/>
+                android:text="@string/list"
+                android:textSize="20sp"
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/buttonEnter"
-                android:layout_width="wrap_content"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/enter"
                 android:layout_gravity="center"
-                android:textSize="20sp"/>
+                android:text="@string/enter"
+                android:textSize="20sp"
+                tools:ignore="ButtonStyle" />
         </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
