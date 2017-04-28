@@ -16,4 +16,11 @@
     <string name="enter">Enter</string>
     <string name="nowplaying">現正撥放:</string>
     <string name="songrequest">點歌:</string>
+    <string name="coverorlyric">CoverOrLyric</string>
+    <string name="cover">Cover</string>
+    <string name="home">Home</string>
+    <string name="next">Next</string>
+    <string name="lyric">Lyric</string>
+    <string name="prev">Prev</string>
+    <string name="pleasesongrequest">請利用下方數字鍵盤點歌:</string>
 </resources>
