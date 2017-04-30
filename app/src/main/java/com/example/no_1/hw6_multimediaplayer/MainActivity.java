@@ -1,6 +1,9 @@
 package com.example.no_1.hw6_multimediaplayer;
 
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.media.MediaMetadataRetriever;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnNumber[]=new Button[10];
     Button btnClear,btnBack,btnList,btnEnter;
     String requestNumber="",showSongName="";
+    String songs[]=new String[]{"missyou","colorful","onewing","entrance"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,7 +101,10 @@ public class MainActivity extends AppCompatActivity {
             }
             if(checkSongNumber())
             {
-                showSongName="歌曲編號:"+requestNumber+"\n歌曲名稱:";
+                AssetFileDescriptor afd = getResources().openRawResourceFd(getResources().getIdentifier(songs[Integer.valueOf(requestNumber)-1], "raw", getApplicationContext().getPackageName()));
+                MediaMetadataRetriever metaRetriever= new MediaMetadataRetriever();
+                metaRetriever.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+                showSongName="歌曲編號:"+requestNumber+"\n歌曲名稱:"+metaRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
                 showSongName();
             }
             else
@@ -129,6 +136,18 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.buttonList:
                     /*show song list*/
+                    final String songlist[]= new String[songs.length];
+                    for(int i=0;i<songlist.length;i++)
+                    {
+                        AssetFileDescriptor afd = getResources().openRawResourceFd(getResources().getIdentifier(songs[i], "raw", getApplicationContext().getPackageName()));
+                        MediaMetadataRetriever metaRetriever= new MediaMetadataRetriever();
+                        metaRetriever.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+                        songlist[i] = (i+1)+"."+metaRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
+                    }
+                    AlertDialog.Builder dialog_list = new AlertDialog.Builder(MainActivity.this);
+                    dialog_list.setTitle("歌單");
+                    dialog_list.setItems(songlist,null);
+                    dialog_list.show();
                     break;
                 case R.id.buttonEnter:
                     /*First check if the song request is correct.
@@ -139,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
                         /*intent*/
                         Intent intent = new Intent();
                         intent.setClass(MainActivity.this, MediaActivity.class)
-                               .putExtra("Song_Number",Integer.valueOf(requestNumber));
+                               .putExtra("Song_Number",Integer.valueOf(requestNumber)-1);
                         startActivity(intent);
                         finish();
                     }
@@ -147,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
                     {
                         showSongName="歌曲不存在!";
                         showSongName();
-                        reset();
+                    //    reset();
                     }
                     break;
             }
@@ -156,8 +175,9 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean checkSongNumber()
     {
-
-        return true;
+        if(requestNumber.equals("")) return false;
+        else if(Integer.valueOf(requestNumber)>songs.length||Integer.valueOf(requestNumber)<=0) return false; //larger than the number of songs
+        else return true;
     }
     public void showSongName()
     {

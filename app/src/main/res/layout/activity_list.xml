@@ -18,9 +18,9 @@
             android:id="@+id/imageViewShow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/ic_launcher"
             android:layout_weight="0.88"
-            android:contentDescription="@string/coverorlyric" />
+            android:contentDescription="@string/coverorlyric"
+            app:srcCompat="@mipmap/ic_launcher" />
 
         <LinearLayout
             android:layout_width="match_parent"
