@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
                       Else,show the error message*/
                     if(checkSongNumber())
                     {
-                        /*intent*/
+                        /*jump to the MediaActivity*/
                         Intent intent = new Intent();
                         intent.setClass(MainActivity.this, MediaActivity.class)
                                .putExtra("Song_Number",Integer.valueOf(requestNumber)-1);
@@ -202,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
             songlist[i] = (i+1)+"."+metaRetriever
                     .extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
         }
+        /*use the AlertDialog to show the songlist*/
         AlertDialog.Builder dialog_list = new AlertDialog.Builder(MainActivity.this);
         dialog_list.setTitle("歌單")
                 .setItems(songlist,null)
