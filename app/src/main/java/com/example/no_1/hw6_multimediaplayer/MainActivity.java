@@ -101,10 +101,16 @@ public class MainActivity extends AppCompatActivity {
             }
             if(checkSongNumber())
             {
-                AssetFileDescriptor afd = getResources().openRawResourceFd(getResources().getIdentifier(songs[Integer.valueOf(requestNumber)-1], "raw", getApplicationContext().getPackageName()));
+                AssetFileDescriptor afd = getResources()
+                        .openRawResourceFd(
+                         getResources().getIdentifier(
+                         songs[Integer.valueOf(requestNumber)-1]
+                                 , "raw", getApplicationContext().getPackageName()));
                 MediaMetadataRetriever metaRetriever= new MediaMetadataRetriever();
-                metaRetriever.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
-                showSongName="歌曲編號:"+requestNumber+"\n歌曲名稱:"+metaRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
+                metaRetriever.setDataSource(afd.getFileDescriptor()
+                        ,afd.getStartOffset(),afd.getLength());
+                showSongName="歌曲編號:"+requestNumber+"\n歌曲名稱:"+metaRetriever
+                        .extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
                 showSongName();
             }
             else
@@ -136,18 +142,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.buttonList:
                     /*show song list*/
-                    final String songlist[]= new String[songs.length];
-                    for(int i=0;i<songlist.length;i++)
-                    {
-                        AssetFileDescriptor afd = getResources().openRawResourceFd(getResources().getIdentifier(songs[i], "raw", getApplicationContext().getPackageName()));
-                        MediaMetadataRetriever metaRetriever= new MediaMetadataRetriever();
-                        metaRetriever.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
-                        songlist[i] = (i+1)+"."+metaRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
-                    }
-                    AlertDialog.Builder dialog_list = new AlertDialog.Builder(MainActivity.this);
-                    dialog_list.setTitle("歌單");
-                    dialog_list.setItems(songlist,null);
-                    dialog_list.show();
+                    showList();
                     break;
                 case R.id.buttonEnter:
                     /*First check if the song request is correct.
@@ -175,8 +170,10 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean checkSongNumber()
     {
-        if(requestNumber.equals("")) return false;
-        else if(Integer.valueOf(requestNumber)>songs.length||Integer.valueOf(requestNumber)<=0) return false; //larger than the number of songs
+        if(requestNumber.equals("")) return false; //no input
+        else if(Integer.valueOf(requestNumber)>songs.length
+                ||Integer.valueOf(requestNumber)<=0)
+            return false; //larger than the number of songs
         else return true;
     }
     public void showSongName()
@@ -189,5 +186,25 @@ public class MainActivity extends AppCompatActivity {
         requestNumber=showSongName="";
         tvSongRequest.setText("");
         tvCurrentSongRequest.setText("請利用下方數字鍵盤點歌:");
+    }
+
+    public void showList()
+    {
+        final String songlist[]= new String[songs.length];
+        for(int i=0;i<songlist.length;i++)
+        {
+            AssetFileDescriptor afd = getResources()
+                    .openRawResourceFd(getResources()
+                    .getIdentifier(songs[i], "raw", getApplicationContext().getPackageName()));
+            MediaMetadataRetriever metaRetriever= new MediaMetadataRetriever();
+            metaRetriever.setDataSource(afd.getFileDescriptor()
+                    ,afd.getStartOffset(),afd.getLength());
+            songlist[i] = (i+1)+"."+metaRetriever
+                    .extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
+        }
+        AlertDialog.Builder dialog_list = new AlertDialog.Builder(MainActivity.this);
+        dialog_list.setTitle("歌單")
+                .setItems(songlist,null)
+                .show();
     }
 }
